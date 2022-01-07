@@ -1,0 +1,24 @@
+*{
+    font-family: sans-serif
+}
+h1{
+    color: red;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+table,th, td{
+    padding:5px 10px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+
+.inline{
+    display: inline;
+}

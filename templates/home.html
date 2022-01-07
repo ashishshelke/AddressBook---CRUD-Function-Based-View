@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Address Book</h1>
+<hr />
+<h2>Add Contact</h2>
+<form action="" method="post">
+  {% csrf_token %} {{form.as_p}}
+  <input type="Submit" />
+</form>
+
+<hr />
+
+<h2>Contacts List</h2>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Lastname</th>
+        <th>Area</th>
+        <th>City</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>Edit / Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in alldata %}
+      <tr>
+        <td>{{data.name}}</td>
+        <td>{{data.lastname}}</td>
+        <td>{{data.locality}}</td>
+        <td>{{data.city}}</td>
+        <td>{{data.mobile}}</td>
+        <td>{{data.email}}</td>
+        <td>
+          <form
+            action="{% url 'delete' data.id %}"
+            method="post"
+            class="inline"
+          >
+            {% csrf_token %}
+            <input type="submit" value="Delete" />
+          </form>
+          <form
+            action="{% url 'update' data.id %}"
+            method="post"
+            class="inline"
+          >
+            {% csrf_token %}
+            <input type="submit" value="Edit" />
+          </form>
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <br />
+  <br />
+</div>
+{% endblock content %}
